@@ -4,42 +4,48 @@ los respectivos constructores. Crear 3 subclases hijas de esa superclase Deporti
 y un atributo extra tambien.
 Bonus: una de las sub clases podria estar compuesta por otras clases.*/
 
+import { error } from "console";
+import { publicDecrypt } from "crypto";
 
 class Deportista {
     protected nombre : string;
     protected dni : number;
     private nacionalidad : string;
 
+    
     constructor(nombre:string, dni :number , nacionalidad :string)
     {
-        this.setNombre(nombre);
+        this.nombre = this.getNombre(nombre);
+        this.dni = dni;
+        this.nacionalidad = nacionalidad;
+       /* this.setNombre(nombre);
         this.setDni(dni);
-        this.setNacionalidad(nacionalidad);
+        this.setNacionalidad(nacionalidad);*/
     }
+    public getNombre(nombre:string):string{
 
-
-    public getNombre():string{
-
-        return this.nombre;
+        return nombre;
     }
+    
+  
     public setNombre(nombre:string):void
     {
         this.nombre = nombre;
     }
 
-    getDni():number
+    public getDni():number
     {
         return this.dni;
     }
-    setDni(dni:number): void{
+    public setDni(dni:number): void{
         this.dni = dni;
     }
 
-    getNacionalidad():string{
-        return this.nacionalidad;
+    public getNacionalidad():string{
+       return this.nacionalidad;
     }
 
-    setNacionalidad(nacionalidad : string):void
+    public setNacionalidad(nacionalidad : string):void
     {
         this.nacionalidad = nacionalidad;
     }
@@ -51,7 +57,8 @@ class futbolista extends Deportista
 
     constructor(nombre:string, dni :number , nacionalidad :string,posicion:string){
     super(nombre, dni , nacionalidad)
-    this.setPosicion(posicion);
+    this.posicion = posicion;
+    //this.setPosicion(posicion);
 
     }
 
@@ -66,16 +73,16 @@ class futbolista extends Deportista
     }
 }
 
+
 class basquetbolista extends Deportista
 {
     private altura: number;
-
     constructor(nombre:string, dni :number , nacionalidad :string,altura:number){
+        
         super(nombre, dni , nacionalidad);
-        this.setAltura(altura);
-
+        //this.setAltura(altura);
+        this.altura = altura;
     }
-
     public getAltura():number{
         return this.altura;
     }
@@ -85,17 +92,21 @@ class basquetbolista extends Deportista
         {
             this.altura = altura;
         }
-    }    
+
+    }   
+   
+   
 }
 
 class tenista extends Deportista
 {
     private raqueta: string
 
+
     constructor(nombre:string, dni :number , nacionalidad :string,raqueta:string){
         super(nombre, dni , nacionalidad);
         this.setRaqueta(raqueta);
-
+        this.raqueta = raqueta;
     }
 
     public getRaqueta(): string{
@@ -107,3 +118,24 @@ class tenista extends Deportista
         this.raqueta = raqueta;
     }
 }
+class futbol5 
+{
+    private futbolista :futbolista;
+
+    constructor(futbolista : futbolista){
+       // this.setFutbolista(futbolista);
+        this.futbolista = futbolista;
+    }
+    public getFutbolista():futbolista{
+        return this.futbolista;
+    }
+
+    public setFutbolista(futbolista:futbolista):void{
+        this.futbolista = futbolista;
+    } 
+}
+
+const futbolista1 = new futbolista("Juan",35412721,"Arg","Enganche");
+const futbol1 = new futbol5(futbolista1);
+
+console.log(futbolista1.getNombre("Juan")+" "+ futbolista1.getPosicion());
