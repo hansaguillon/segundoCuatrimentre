@@ -1,5 +1,7 @@
+import { randomUUID as uid } from "node:crypto";
+
 export class usuario{
-    private id :number;
+    private id: string = uid();
     private nomyape : string;
     private dni :number;
     private edad : number;
