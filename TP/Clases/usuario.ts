@@ -1,4 +1,4 @@
-class usuario{
+export class usuario{
     private id :number;
     private nomyape : string;
     private dni :number;
@@ -6,6 +6,7 @@ class usuario{
     private socio: boolean;
     private telefono:string;
     private direccion:string;
+    private puntos:number = 0;
 
 
     constructor(nomyape:string,dni:number,edad:number,socio:boolean,telefono:string,direccion:string)
@@ -63,5 +64,13 @@ class usuario{
     public setDireccion(direccion:string):void
     {
         this.direccion = direccion;
+    }
+    public getPuntos():number
+    {
+        return this.puntos;
+    }
+    public setPuntos(puntos:number):void
+    {
+        this.puntos = puntos;
     }
 }
