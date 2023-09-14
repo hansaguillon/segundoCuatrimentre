@@ -21,6 +21,10 @@ export class usuario{
         this.direccion = direccion;
     }
 
+    public getId():string
+    {
+        return this.id;
+    }
     public getNomyape():string{
         return this.nomyape;
     }

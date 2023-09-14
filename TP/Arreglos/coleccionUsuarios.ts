@@ -50,13 +50,9 @@ class coleccionUsuarios
         }catch(Error){
 
             console.error("el usuario ya existe");
-        }
-        
-        {
-
-        }
-        
+        }    
     }
+    
 
        
 }
