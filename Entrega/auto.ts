@@ -1,3 +1,4 @@
+import { error } from "console";
 
 
 abstract class vehiculo
@@ -42,14 +43,22 @@ abstract class vehiculo
     }
     set modelo(modelo:number)
     {
-        if(modelo > 1980)
+        try{
+            if(modelo > 1980)
+            {
+                this._modelo = modelo;
+                console.log(modelo);
+            }
+            else
+            {
+                console.log("hola");
+                throw new Error("el auto es muy viejo para este sistema");
+            }
+        }catch(e)
         {
-            this._modelo = modelo;
+            console.error(e);
         }
-        else
-        {
-            throw new Error("el auto es muy viejo para este sistema");
-        }
+       
     }
 
     get velocidad():number
@@ -59,14 +68,19 @@ abstract class vehiculo
 
     set velocidad(velocidad:number)
     {
+        try{
         if(velocidad >= 0)
         {
             this._velocidad = velocidad;
         }
         else
         {
-            throw new Error("la velodad no puede ser negativa");
+            throw new Error('la velodad no puede ser negativa');
         }
+    }catch(e)
+    {
+        console.error(e);
+    }
     }
 
     
@@ -105,8 +119,8 @@ class autoCiudad extends vehiculo
 }
 
 
-try{
-const focus = new autoCiudad("Ford",2010,"Azul","IVL647");
+
+const focus = new autoCiudad("Ford",1900,"Azul","IVL647");
 focus.acelerar();
 console.log(focus.informarvelocidad());
 focus.acelerar();
@@ -121,8 +135,4 @@ focus.frenar();
 console.log(focus.informarvelocidad());
 
 console.log(focus.informarvelocidad());
-}
-catch(Error)
-{
-    console.error("No puedo usar el error.message");
-}
+

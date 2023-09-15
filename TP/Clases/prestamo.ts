@@ -1,9 +1,10 @@
-import { publicDecrypt } from "crypto";
+import { randomUUID as uid } from "node:crypto";
 import {itemslibreria} from "./itemlibre";
 import {usuario} from "./usuario";
 
- class prestamo
+ export class prestamo
 {
+    private id: string = uid();
     private usuario: usuario;
     private itemprestado : itemslibreria;
     private fechaprestamo:  Date;
@@ -16,6 +17,10 @@ import {usuario} from "./usuario";
         this.fechaprestamo = new Date();
         this.fechadevolucion = new Date(this.fechaprestamo)
         this.fechaprestamo.setDate(this.fechaprestamo.getDate() +7 );
+    }
+    public getID():string{
+
+        return this.id;
     }
 
     public getUsuario():usuario

@@ -1,4 +1,3 @@
-import { error } from "console";
 import {usuario} from "../Clases/usuario";
 
 class coleccionUsuarios
@@ -24,7 +23,7 @@ class coleccionUsuarios
         }
         
 
-    public buscarUsusario(id:string):usuario{
+    public buscarUsusarioPorId(id:string):usuario{
       
 
             let usuario =this.usuarios.find((usuarios) => usuario.getId() === id)
@@ -33,6 +32,15 @@ class coleccionUsuarios
             return usuario;
 
     }
+    public buscarUsusarioPorDni(dni:number):usuario{
+      
+
+        let usuario =this.usuarios.find((usuarios) => usuario.getDni() === dni)
+
+
+        return usuario;
+
+}
     
     public agregarUsuario(nomyape:string,dni:number,edad:number,socio:boolean,telefono:string,direccion:string):void
     {   
@@ -47,13 +55,46 @@ class coleccionUsuarios
                 throw new Error("el usuario ya esta registrado");
             }
 
-        }catch(Error){
+        }catch(e){
 
-            console.error("el usuario ya existe");
+            console.error(e);
         }    
     }
-    
+    public modificarUsuario()
+    {
 
+    }
+    public eliminarUsuarioPorDni(dni:number)
+    {
+        this.usuarios.forEach(function (user,indice)
+        {
+            if(user.getDni() === dni)
+            {
+                this.usuarios.splice(indice,1);
+            }
+        })
+
+    }
+    public eliminarUsuarioPorId(id:string)
+    {
+        this.usuarios.forEach(function (user,indice)
+        {
+            if(user.getId() === id)
+            {
+                this.usuarios.splice(indice,1);
+            }
+        })
+    }
+
+
+    public listarUsuarios():void{
+
+        this.usuarios.forEach(function (user)
+        {
+            console.log(user);
+        })
+
+    }
        
 }
 
