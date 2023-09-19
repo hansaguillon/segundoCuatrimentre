@@ -3,7 +3,7 @@ import { itemslibreria } from "../Clases/itemlibre";
 
 class coleccionItems 
 {
-    private items:[];
+    private items:itemslibreria[];
 
 
     public constructor()

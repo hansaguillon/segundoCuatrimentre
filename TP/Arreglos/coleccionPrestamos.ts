@@ -2,7 +2,7 @@ import { prestamo } from "../Clases/prestamo";
 
 class coleccionPrestamos
 {
-    private prestamos : [];
+    private prestamos : prestamo[];
 
 
     public constructor()
