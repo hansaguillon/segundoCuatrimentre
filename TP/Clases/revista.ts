@@ -1,13 +1,13 @@
 import {itemslibreria} from "./itemlibre"
 
 
-class revista extends itemslibreria
+export class revista extends itemslibreria
 {
     private editor : string;
 
-    public constructor(titulo:string,anio:number,editor:string)
+    public constructor(codigo:number,titulo:string,anio:number,cant:number,editor:string)
     {
-        super(titulo,anio);
+        super(codigo,titulo,anio,cant);
         this.editor = editor;
 
     }

@@ -7,11 +7,18 @@ export class itemslibreria{
     private titulo : string;
     private anio : number;
     private disponible : boolean = true;
+    private cant: number;
+    private codigo : number;
 
-    public constructor(titulo:string,anio:number)
+    public constructor(codigo:number,titulo:string,anio:number,cant:number)
     {
         this.titulo = titulo;
         this.anio = anio;
+        this.cant = cant;
+        this.codigo = codigo;
+    }
+    public getCodigo():number{
+        return this.codigo;
     }
 
     public getId():string{
@@ -42,6 +49,19 @@ export class itemslibreria{
     {
         this.disponible = !this.disponible;
     }
+    public gerCant():number
+    {
+        return this.cant;
+    }
+    public sumarCant(cant:number):void
+    {
+        this.cant += cant;
+    }
+    public restarCant(cant:number):void
+    {
+        this.cant -= cant;
+    }
+
 
 
 

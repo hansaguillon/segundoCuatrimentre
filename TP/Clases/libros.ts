@@ -2,15 +2,15 @@ import {itemslibreria} from "./itemlibre"
 
 
 
-class libro extends itemslibreria
+export class libro extends itemslibreria
 {
     private autor : string;
     private genero : string;
     private edadApta :number;
 
-    public constructor(titulo:string,anio:number,autor:string,genero:string,edadApta:number)
+    public constructor(codigo:number,titulo:string,anio:number,cant:number,autor:string,genero:string,edadApta:number)
     {
-        super(titulo,anio);
+        super(codigo,titulo,anio,cant);
         this.autor = autor;
         this.genero = genero;
         this.edadApta = edadApta;

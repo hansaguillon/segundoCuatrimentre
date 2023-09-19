@@ -9,6 +9,8 @@ import {usuario} from "./usuario";
     private itemprestado : itemslibreria;
     private fechaprestamo:  Date;
     private fechadevolucion : Date;
+    private devolucion : Date;
+    private activo :boolean = true;
 
     constructor(usuario:usuario , itemprestado: itemslibreria)
     {
@@ -49,6 +51,23 @@ import {usuario} from "./usuario";
 
     public getFechaDevolucion():Date{
         return this.fechadevolucion;
+    }
+
+    public getDevolcuion():Date{
+        return this.devolucion;
+    }
+    public devolucionEfectuada()
+    {
+        this.devolucion = new Date();
+    }
+    public getActivo():boolean
+    {
+        return this.activo;
+    }
+
+    public cambiarEstadoDePrestamo():void
+    {
+        this.activo = !this.activo;
     }
 
 }

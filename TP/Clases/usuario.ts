@@ -1,3 +1,4 @@
+import { BlobOptions } from "node:buffer";
 import { randomUUID as uid } from "node:crypto";
 
 export class usuario{
@@ -5,18 +6,18 @@ export class usuario{
     private nomyape : string;
     private dni :number;
     private edad : number;
-    private socio: boolean;
     private telefono:string;
     private direccion:string;
     private puntos:number = 0;
+    private activo: boolean = true;
+    private penalizacion = false;
 
 
-    constructor(nomyape:string,dni:number,edad:number,socio:boolean,telefono:string,direccion:string)
+    constructor(nomyape:string,dni:number,edad:number,telefono:string,direccion:string)
     {
         this.nomyape = nomyape;
         this.dni = dni;
         this.edad = edad;
-        this.socio = socio;
         this.telefono = telefono;
         this.direccion = direccion;
     }
@@ -49,13 +50,7 @@ export class usuario{
 
         this.edad = edad;
     }
-    public getSocio():boolean
-    {
-        return this.socio;
-    }
-    public setSocio():void{
-        this.socio = !this.socio;
-    }
+
     public getTelefono():string
     {
         return this.telefono;
@@ -75,8 +70,29 @@ export class usuario{
     {
         return this.puntos;
     }
-    public setPuntos(puntos:number):void
+    public sumaPuntos(puntos:number):void
     {
-        this.puntos = puntos;
+        this.puntos += puntos;
+    }
+    public restaPuntos(puntos:number):void
+    {
+        this.puntos += puntos;
+    }
+
+    public getPenalizado():boolean
+    {
+        return this.penalizacion;
+    }
+    public setPenalizado(penalizacion: boolean):void
+    {
+        this.penalizacion = penalizacion;
+    }
+    public getActivo():boolean
+    {
+        return this.activo;
+    }
+    public setActivo(activo:boolean):void
+    {
+        this.activo = activo;
     }
 }

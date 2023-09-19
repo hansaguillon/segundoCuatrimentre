@@ -1,6 +1,6 @@
 import {usuario} from "../Clases/usuario";
 
-class coleccionUsuarios
+export class coleccionUsuarios
 {
     private usuarios: usuario[];
 
@@ -23,31 +23,31 @@ class coleccionUsuarios
         }
         
 
-    public buscarUsusarioPorId(id:string):usuario{
+     public buscarUsusarioPorId(id:string):usuario | undefined{
       
 
-            let usuario =this.usuarios.find((usuarios) => usuario.getId() === id)
+            let usuario =this.usuarios.find((user) => user.getId() === id)
 
 
             return usuario;
 
     }
-    public buscarUsusarioPorDni(dni:number):usuario{
+    public buscarUsusarioPorDni(dni:number):usuario | undefined{
       
 
-        let usuario =this.usuarios.find((usuarios) => usuario.getDni() === dni)
+        let usuario =this.usuarios.find((user) => user.getDni() === dni)
 
 
         return usuario;
 
 }
     
-    public agregarUsuario(nomyape:string,dni:number,edad:number,socio:boolean,telefono:string,direccion:string):void
+    public agregarUsuario(nomyape:string,dni:number,edad:number,telefono:string,direccion:string):void
     {   
         try{
             if(!this.existeUsuario(dni))
             {
-                const usuario1 = new usuario(nomyape,dni,edad,socio,telefono,direccion);
+                const usuario1 = new usuario(nomyape,dni,edad,telefono,direccion);
                 this.usuarios.push(usuario1);
             }
             else
@@ -64,7 +64,7 @@ class coleccionUsuarios
     {
 
     }
-    public eliminarUsuarioPorDni(dni:number)
+     public eliminarUsuarioPorDni(dni:number)
     {
         this.usuarios.forEach(function (user,indice)
         {
@@ -95,6 +95,34 @@ class coleccionUsuarios
         })
 
     }
+
+    public bloquearUsuario(dni:number):void
+    {
+        let usuario = this.buscarUsusarioPorDni(dni);
+        if(usuario !== undefined)
+        {
+            if(usuario.getActivo() === true)
+            {
+                usuario.setActivo(false);
+            }
+        }
+       
+    }
+    public agregarPuntos(dni:number,puntos:number):void
+    {
+        let usuario = this.buscarUsusarioPorDni(dni);
+        if (usuario !== undefined)
+        {
+            usuario.sumaPuntos(puntos);
+
+            if(usuario.getPuntos() >= 6)
+            {
+                usuario.setPenalizado(true);
+            }
+        }
+ 
+    }
+
        
 }
 
