@@ -3,12 +3,14 @@ import { usuario } from "../Clases/usuario";
 import { itemslibreria } from "../Clases/itemlibre";
 import {coleccionUsuarios} from "./coleccionUsuarios";
 import {coleccionItems} from "./coleccionItems";
+import { FileManagerPrestamos } from "../Archivos/fsprestamos";
 
 class coleccionPrestamos
 {
     private prestamos : prestamo[];
     private coleccionUser:coleccionUsuarios;
     private coleccionitem:coleccionItems;
+    private flPrestamos:FileManagerPrestamos;
     
     public constructor()
     {
@@ -34,6 +36,7 @@ class coleccionPrestamos
                                   const prestamo1 = new prestamo(usuario,item);
                                   this.prestamos.push(prestamo1);
                                   item.restarCant(1);
+                                  this.flPrestamos.guardarDatos(this.prestamos);
     
                                }
                                 else
