@@ -1,1 +1,35 @@
-[{"id":"073d947d-861f-4fae-a5da-fc117b8ed862","puntos":0,"activo":true,"penalizacion":false,"nomyape":"hans","dni":35412721,"edad":32,"telefono":"2983346206","direccion":"Sarmineto"},{"id":"0a173271-aeca-45be-96b2-9f93adc70138","puntos":0,"activo":true,"penalizacion":false,"nomyape":"juan","dni":35412722,"edad":35,"telefono":"2983346206","direccion":"Sarmineto"}]
+[
+  {
+    "id": "ff42b52c-8b6d-40a9-a504-a5dac7ba6300",
+    "puntos": 0,
+    "activo": true,
+    "penalizacion": false,
+    "nomyape": "juan",
+    "dni": 3874521,
+    "edad": 85,
+    "telefono": "222585",
+    "direccion": "9 de julio"
+  },
+  {
+    "id": "c7aeef08-59d9-4a09-9ce5-6947cf82e1c8",
+    "puntos": 0,
+    "activo": true,
+    "penalizacion": false,
+    "nomyape": "pau",
+    "dni": 33847625,
+    "edad": 34,
+    "telefono": "2215588742",
+    "direccion": "brown 825"
+  },
+  {
+    "id": "9780f33c-63d9-4749-8aba-9f1d99e678cc",
+    "puntos": 0,
+    "activo": true,
+    "penalizacion": false,
+    "nomyape": "hans",
+    "dni": 35412721,
+    "edad": 32,
+    "telefono": "2983346206",
+    "direccion": "brown 825"
+  }
+]

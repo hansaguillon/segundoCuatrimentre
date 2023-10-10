@@ -70,4 +70,13 @@ import {usuario} from "./usuario";
         this.activo = !this.activo;
     }
 
+    static revive(key: string, value: any): prestamo | any {
+        if (typeof value === 'object' && value !== null && 'usuario' in value) {
+            const pres = new prestamo(value.usuario,value.itemprestado);
+            Object.assign(pres, value);
+            return pres;
+        }
+        return value;
+    }
+
 }

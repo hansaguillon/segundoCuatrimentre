@@ -95,4 +95,12 @@ export class usuario{
     {
         this.activo = activo;
     }
+    static revive(key: string, value: any): usuario | any {
+        if (typeof value === 'object' && value !== null && 'nomyape' in value) {
+            const user = new usuario(value.nomyape,value.dni,value.edad,value.telefono,value.direccion);
+            Object.assign(user, value);
+            return user;
+        }
+        return value;
+    }
 }

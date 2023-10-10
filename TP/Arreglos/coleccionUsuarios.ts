@@ -11,7 +11,7 @@ export class coleccionUsuarios
     }
 
     public existeUsuario(dni:number):boolean{
-            let usuario =this.usuarios.find((usuarios) => usuario.getDni() === dni)
+            const usuario =this.usuarios.find((user) => user.getDni() === dni)
             let existe = false;
 
             if(usuario !== undefined)
@@ -26,7 +26,7 @@ export class coleccionUsuarios
      public buscarUsusarioPorId(id:string):usuario | undefined{
       
 
-            let usuario =this.usuarios.find((user) => user.getId() === id)
+            const usuario =this.usuarios.find((user) => user.getId() === id)
 
 
             return usuario;
@@ -35,7 +35,7 @@ export class coleccionUsuarios
     public buscarUsusarioPorDni(dni:number):usuario | undefined{
       
 
-        let usuario =this.usuarios.find((user) => user.getDni() === dni)
+        const usuario =this.usuarios.find((user) => user.getDni() === dni)
 
 
         return usuario;
@@ -66,24 +66,29 @@ export class coleccionUsuarios
     }
      public eliminarUsuarioPorDni(dni:number)
     {
-        this.usuarios.forEach(function (user,indice)
-        {
-            if(user.getDni() === dni)
-            {
-                this.usuarios.splice(indice,1);
+        this.usuarios.forEach((user, indice) => {
+            if (user.getDni() === dni) {
+                this.usuarios.splice(indice, 1);
             }
-        })
+        });
 
+    }
+
+    public devolverusuarios():usuario[]
+    {
+        return this.usuarios;
     }
     public eliminarUsuarioPorId(id:string)
     {
-        this.usuarios.forEach(function (user,indice)
-        {
-            if(user.getId() === id)
-            {
-                this.usuarios.splice(indice,1);
+        this.usuarios.forEach((user, indice) => {
+            if (user.getId() === id) {
+                this.usuarios.splice(indice, 1);
             }
-        })
+        });
+    }
+    public cargarUsuarios(usuarios : usuario[])
+    {
+        this.usuarios = usuarios;
     }
 
 
@@ -122,6 +127,7 @@ export class coleccionUsuarios
         }
  
     }
+
 
        
 }

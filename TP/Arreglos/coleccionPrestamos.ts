@@ -36,7 +36,6 @@ class coleccionPrestamos
                                   const prestamo1 = new prestamo(usuario,item);
                                   this.prestamos.push(prestamo1);
                                   item.restarCant(1);
-                                  this.flPrestamos.guardarDatos(this.prestamos);
     
                                }
                                 else
