@@ -1,6 +1,7 @@
 
 import * as fs from 'fs';
 import { usuario } from '../Clases/usuario';
+import { coleccionUsuarios } from "../Arreglos/coleccionUsuarios";
 
 export class FileManagerUsuarios {
     private filePath: string;
@@ -11,44 +12,44 @@ export class FileManagerUsuarios {
     }
 
   // Método para guardar un arreglo de objetos en el archivo.
-  public guardarDatos(usuarios: usuario[]): void {
-    const userJSON = JSON.stringify(usuarios);
-    fs.writeFileSync(this.filePath, userJSON, 'utf8');
+  public guardarDatosUsuarios(usuarios: usuario[]): void {
+    const userJSON = JSON.stringify(usuarios,null,2);
+    fs.writeFileSync(this.filePath, userJSON, {
+      encoding: "utf8",
+    });
   }
 
+
+
   // Método para cargar los datos desde el archivo.
-   public cargarDatos(): usuario[] {
+   public cargarDatosUsuarios(): usuario[] {
     try {
       const userJSON = fs.readFileSync(this.filePath, 'utf8');
-      return JSON.parse(userJSON);
+      return JSON.parse(userJSON,usuario.revive);
     } catch (error) {
       console.error('Error al cargar los datos:', error);
       return [];
     }
   }
 
+ 
   
-  public buscarUsusarioPorDni(dni:number,usuarios: usuario[]):usuario | undefined{
-      
-
-    let usuario =usuarios.find((user) => user.getDni() === dni)
-
-
-    return usuario;
-
 }
-}
-
+/*
 // Uso de la clase FileManager.
 const manager = new FileManagerUsuarios();
-const usuarios = [new usuario("hans",35412721,32,"2983346206","Sarmineto"), new usuario("juan",35412722,35,"2983346206","Sarmineto")];
-
-// Guardar objetos en el archivo.
-manager.guardarDatos(usuarios);
-
-// Cargar objetos desde el archivo.
-const objetosCargados = manager.buscarUsusarioPorDni(35412722,usuarios);
-console.log(objetosCargados);
+const usuarios = new coleccionUsuarios;
 
 
+usuarios.cargarUsuarios(manager.cargarDatosUsuarios());
+console.log(usuarios.listarUsuarios());
+
+usuarios.agregarUsuario("pau",33847625,34,"2215588742","brown 825");
+usuarios.agregarUsuario("hans",35412721,32,"2983346206","brown 825");
+
+
+
+manager.guardarDatosUsuarios(usuarios.devolverusuarios());
+console.log(usuarios.listarUsuarios());
+*/
 
