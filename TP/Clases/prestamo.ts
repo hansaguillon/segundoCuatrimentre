@@ -17,8 +17,8 @@ import {usuario} from "./usuario";
         this.usuario = usuario;
         this.itemprestado = itemprestado;
         this.fechaprestamo = new Date();
-        this.fechadevolucion = new Date(this.fechaprestamo)
-        this.fechaprestamo.setDate(this.fechaprestamo.getDate() +7 );
+        this.fechadevolucion = new Date(this.fechaprestamo);
+        this.fechadevolucion.setDate(this.fechaprestamo.getDate() +7 );
     }
     public getID():string{
 
