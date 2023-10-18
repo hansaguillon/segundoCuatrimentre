@@ -9,7 +9,7 @@ import {usuario} from "./usuario";
     private itemprestado : itemslibreria;
     private fechaprestamo:  Date;
     private fechadevolucion : Date;
-    private devolucion : Date;
+    private devolucion : Date| undefined = undefined;
     private activo :boolean = true;
 
     constructor(usuario:usuario , itemprestado: itemslibreria)
@@ -53,7 +53,7 @@ import {usuario} from "./usuario";
         return this.fechadevolucion;
     }
 
-    public getDevolcuion():Date{
+    public getDevolcuion():Date | undefined {
         return this.devolucion;
     }
     public devolucionEfectuada()

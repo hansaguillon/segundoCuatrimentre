@@ -4,17 +4,14 @@ import { usuario } from '../Clases/usuario';
 import { coleccionUsuarios } from "../Arreglos/coleccionUsuarios";
 
 export class FileManagerUsuarios {
-    private filePath: string;
 
-    constructor() {
 
-        this.filePath = '../Datos/user.json';
-    }
+
 
   // Método para guardar un arreglo de objetos en el archivo.
-  public guardarDatosUsuarios(usuarios: usuario[]): void {
+  static guardarDatosUsuarios(usuarios: usuario[]): void {
     const userJSON = JSON.stringify(usuarios,null,2);
-    fs.writeFileSync(this.filePath, userJSON, {
+    fs.writeFileSync('../Datos/user.json', userJSON, {
       encoding: "utf8",
     });
   }
@@ -22,9 +19,9 @@ export class FileManagerUsuarios {
 
 
   // Método para cargar los datos desde el archivo.
-   public cargarDatosUsuarios(): usuario[] {
+   static cargarDatosUsuarios(): usuario[] {
     try {
-      const userJSON = fs.readFileSync(this.filePath, 'utf8');
+      const userJSON = fs.readFileSync('../Datos/user.json', 'utf8');
       return JSON.parse(userJSON,usuario.revive);
     } catch (error) {
       console.error('Error al cargar los datos:', error);

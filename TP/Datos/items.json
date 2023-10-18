@@ -1,0 +1,52 @@
+[
+  {
+    "id": "afb5caad-2cfb-4a10-998d-2d46341daee3",
+    "disponible": true,
+    "titulo": "Juego de tronos",
+    "anio": 1996,
+    "cant": 2,
+    "codigo": 1,
+    "autor": "George R. R. Martin",
+    "genero": "Fantasía heroica"
+  },
+  {
+    "id": "2bdb1c4e-7612-4ca5-b8c0-dd58f695367e",
+    "disponible": true,
+    "titulo": "Choque de reyes",
+    "anio": 1998,
+    "cant": 3,
+    "codigo": 2,
+    "autor": "George R. R. Martin",
+    "genero": "Fantasía heroica"
+  },
+  {
+    "id": "776ca856-bf0d-4972-b283-1eabb5e34233",
+    "disponible": true,
+    "titulo": "Tormenta de espadas",
+    "anio": 2000,
+    "cant": 1,
+    "codigo": 3,
+    "autor": "George R. R. Martin",
+    "genero": "Fantasía heroica"
+  },
+  {
+    "id": "0e0f9c26-809f-43df-b934-7f49e525d657",
+    "disponible": true,
+    "titulo": "Festín de cuervos",
+    "anio": 2005,
+    "cant": 5,
+    "codigo": 4,
+    "autor": "George R. R. Martin",
+    "genero": "Fantasía heroica"
+  },
+  {
+    "id": "2e897773-5641-4638-b959-43dfa121b5eb",
+    "disponible": true,
+    "titulo": "Danza de dragones ",
+    "anio": 2011,
+    "cant": 8,
+    "codigo": 5,
+    "autor": "George R. R. Martin",
+    "genero": "Fantasía heroica"
+  }
+]

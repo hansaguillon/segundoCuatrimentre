@@ -62,7 +62,14 @@ export class itemslibreria{
         this.cant -= cant;
     }
 
-
+    static revive(key: string, value: any): itemslibreria | any {
+        if (typeof value === 'object' && value !== null && 'autor' in value) {
+            const item = new itemslibreria(value.codigo,value.titulo,value.anio,value.cant);
+            Object.assign(item, value);
+            return item;
+        }
+        return value;
+    }
 
 
 }

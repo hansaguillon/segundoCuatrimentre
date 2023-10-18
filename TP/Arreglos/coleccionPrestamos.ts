@@ -4,18 +4,22 @@ import { itemslibreria } from "../Clases/itemlibre";
 import {coleccionUsuarios} from "./coleccionUsuarios";
 import {coleccionItems} from "./coleccionItems";
 import { FileManagerPrestamos } from "../Archivos/fsprestamos";
+import { FileManagerUsuarios } from "../Archivos/fsusuarios";
+import { FileManageritems } from "../Archivos/fsitems";
 
-class coleccionPrestamos
+export class coleccionPrestamos
 {
     private prestamos : prestamo[];
     private coleccionUser:coleccionUsuarios;
     private coleccionitem:coleccionItems;
-    private flPrestamos:FileManagerPrestamos;
     
     public constructor()
     {
         this.prestamos = [];
-        
+        this.coleccionUser = new coleccionUsuarios();
+        this.coleccionitem = new coleccionItems();
+        this.coleccionUser.cargarUsuarios(FileManagerUsuarios.cargarDatosUsuarios());
+        this.coleccionitem.cargarItems(FileManageritems.cargarDatos());
     }
 
     public agregarPrestamo(dni:number, codigo:number):void{
@@ -146,7 +150,20 @@ class coleccionPrestamos
 
     public mostrarPrestamo(id:string):void
     {
+        const prestamo1 = this.buscarPrestamo(id);
+        if(prestamo1 !== undefined)
+        {
+            console.log(prestamo1);
+        }
+    }
+    public cargarPrestamos(prestamos : prestamo[]):void
+    {
+        this.prestamos = prestamos;
+    }
 
+    public devolverPrestamos():prestamo[]
+    {
+        return this.prestamos;
     }
 
     public listarPresto():void{
@@ -155,3 +172,7 @@ class coleccionPrestamos
     }
 
 }
+
+
+
+

@@ -35,12 +35,12 @@ export class coleccionItems
         }
 
     }
-    public agregarLibro(codigo:number,titulo:string,anio:number,cant:number,autor:string,genero:string,edadApta:number):void{
+    public agregarLibro(codigo:number,titulo:string,anio:number,cant:number,autor:string,genero:string):void{
         try{
             let libro2 = this.buscarItemPorCod(codigo);
             if(libro2 === undefined)
             {
-                const libro1 = new libro(codigo,titulo,anio,cant,autor,genero,edadApta);
+                const libro1 = new libro(codigo,titulo,anio,cant,autor,genero);
                 this.items.push(libro1);
             }
             else
@@ -58,9 +58,22 @@ export class coleccionItems
 
     public eliminarItem(id:string):void{
 
-        this.items.forEach(function (item,indice)
+        this.items.forEach((item,indice) =>
         {
             if(item.getId() === id)
+            {
+                this.items.splice(indice,1);
+            }
+
+        })
+
+
+    }
+    public eliminarItemxcod(cod:number):void{
+
+        this.items.forEach((item,indice) =>
+        {
+            if(item.getCodigo() === cod)
             {
                 this.items.splice(indice,1);
             }
@@ -85,7 +98,20 @@ export class coleccionItems
 
     public listarItems():void
     {
+        this.items.forEach(function(item)
+        {
+            console.log(item);
+        })
+    }
 
+    public cargarItems(items :itemslibreria[] ):void
+    {
+        this.items = items;
+    }
+
+    public devovlerItems():itemslibreria[]
+    {
+        return this.items;
     }
 
 
