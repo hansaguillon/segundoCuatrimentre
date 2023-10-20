@@ -1,0 +1,29 @@
+h1{
+    display: flex;
+  justify-content: center; 
+  align-items: center;
+    
+}
+img{
+    max-width: 200px;
+  height: auto;
+}
+
+article{
+
+    border: 2px solid #000;
+    max-width: 200px;
+    margin:  auto;
+
+}
+
+h2{
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  flex-wrap: wrap;
+  display: flex;
+ justify-content: space-between;
+
+}

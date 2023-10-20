@@ -5,12 +5,20 @@ const response = `{"info":{"count":826,"pages":42,"next":"https://rickandmortyap
 const parseData = JSON.parse(response);
 console.log(parseData);
 
-products = document.getElementById("products-container");
+products = document.getElementById("personjes");
 
-for (let pr of parseData)
+for (let pr of parseData.results)
 {
     const card = document.createElement("article");
-    const cardContent =' <h2> ${pr.name} </h2>';
+    const cardContent =`
+    <h2> ${pr.name}</h2>
+    <img src= ${pr.image} alt= ${pr.name}/>
+    <h2> ${pr.status}</h2>
+    <h2> ${pr.species}</h2>
+    <h2> ${pr.type}</h2>
+    <h2> ${pr.gender}</h2>
+    <h2> ${pr.origin.name}</h2>
+    `;
 
     card.innerHTML = cardContent;
     products.appendChild(card);
