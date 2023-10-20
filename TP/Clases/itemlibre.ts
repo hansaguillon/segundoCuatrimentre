@@ -53,9 +53,9 @@ export class itemslibreria{
     {
         return this.cant;
     }
-    public sumarCant(cant:number):void
+    public sumarCant():void
     {
-        this.cant += cant;
+        this.cant = this.cant+1;
     }
     public restarCant(cant:number):void
     {

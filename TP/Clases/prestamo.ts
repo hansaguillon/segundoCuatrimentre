@@ -1,6 +1,8 @@
 import { randomUUID as uid } from "node:crypto";
 import {itemslibreria} from "./itemlibre";
 import {usuario} from "./usuario";
+import { libro } from "./libros";
+
 
  export class prestamo
 {
@@ -72,11 +74,26 @@ import {usuario} from "./usuario";
 
     static revive(key: string, value: any): prestamo | any {
         if (typeof value === 'object' && value !== null && 'usuario' in value) {
+
+            
             const pres = new prestamo(value.usuario,value.itemprestado);
+            
             Object.assign(pres, value);
             return pres;
         }
         return value;
     }
+    static revive2(key: string, value: any): prestamo | any {
+        if (typeof value === 'object' && value !== null && 'usuario' in value&& 'itemprestado' in value) {
+            const user = usuario.revive('',value.usuario);
+            const item = libro.revive('',value.itemprestado);
+            const pres = new prestamo(user,item);
+             Object.assign(pres, value);
+            return pres;
+        }
+        return value;
+    }
+
 
 }
+

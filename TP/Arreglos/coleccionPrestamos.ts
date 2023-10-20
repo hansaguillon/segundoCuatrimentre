@@ -6,6 +6,8 @@ import {coleccionItems} from "./coleccionItems";
 import { FileManagerPrestamos } from "../Archivos/fsprestamos";
 import { FileManagerUsuarios } from "../Archivos/fsusuarios";
 import { FileManageritems } from "../Archivos/fsitems";
+import { log } from "console";
+import { libro } from "../Clases/libros";
 
 export class coleccionPrestamos
 {
@@ -40,6 +42,7 @@ export class coleccionPrestamos
                                   const prestamo1 = new prestamo(usuario,item);
                                   this.prestamos.push(prestamo1);
                                   item.restarCant(1);
+                                 FileManageritems.guardarDatos(this.coleccionitem.devovlerItems());
     
                                }
                                 else
@@ -72,7 +75,7 @@ export class coleccionPrestamos
         }
     }
 
-   
+
 
     public devoluciondelPrestamo(id:string):void
     {
@@ -80,8 +83,10 @@ export class coleccionPrestamos
         if(dev !== undefined)
         {
             dev.cambiarEstadoDePrestamo();
-            const item = dev.getItemprestado();
-            item.sumarCant(1);
+            const item= libro.revive('',dev.getItemprestado());
+
+            item.sumarCant();
+            console.log(item);
             dev.devolucionEfectuada();
             if(dev.getFechaDevolucion() > dev.getFechaPrestamo())
             {
@@ -109,33 +114,40 @@ export class coleccionPrestamos
 
     public calcularPenalizacion(devolucion:prestamo):void
     {
-        const fechadevo = devolucion.getFechaDevolucion();
-        const fechapres = devolucion.getFechaPrestamo();
-        const canti = fechapres.getTime() - fechadevo.getTime();
+        const fechadevo :  Date = new Date(devolucion.getFechaDevolucion());
+        const fechaPres : Date = new Date();
+        
+        const canti = fechaPres.getTime() - fechadevo.getTime();
+        
         const diasDiferencia = Math.floor(canti / (1000 * 60 * 60 * 24));
-        const usuario = devolucion.getUsuario();
+        console.log(diasDiferencia);
+        
+        const user = usuario.revive('',devolucion.getUsuario()) ;
+
+
         if(diasDiferencia > 10)
         {
-            usuario.setPenalizado(true);
+            user.setPenalizado(true);
+            console.log(user);
             throw new Error("El usuario a sido bloqueado, no podra volver a alquilar libros");
-
+            
         }
         else
         {
             if(diasDiferencia > 5 && diasDiferencia < 10)
             {
-                usuario.sumaPuntos(6);
-                usuario.setPenalizado(true);
+                user.sumaPuntos(6);
+                user.setPenalizado(true);
                 throw new Error("El usuario a sido penalizado, no podra alquilar nada por una semana");
             }
             else
                 if(diasDiferencia > 2 && diasDiferencia < 5)
                 {
-                    usuario.sumaPuntos(3);
+                    user.sumaPuntos(3);
                 }
                 else
                 {
-                    usuario.sumaPuntos(2);
+                    user.sumaPuntos(2);
                 }
         }
 
@@ -153,7 +165,21 @@ export class coleccionPrestamos
         const prestamo1 = this.buscarPrestamo(id);
         if(prestamo1 !== undefined)
         {
-            console.log(prestamo1);
+            if(prestamo1.getActivo())
+            {
+                console.log("El prestamo esta activo, todavia no lo devolvio");
+            }
+            console.log(JSON.stringify(prestamo1.getUsuario() , null ,2) );
+            console.log(JSON.stringify(prestamo1.getItemprestado() , null ,2) );
+            const fechaPres : Date = new Date(prestamo1.getFechaPrestamo());
+            const fechadev : Date = new Date(prestamo1.getFechaDevolucion());
+            console.log("Fecha de prestamo: "+fechaPres.toDateString());
+            console.log("Fecha de devolucion: "+fechadev.toDateString());
+            if(prestamo1.getDevolcuion() !== undefined)
+            {
+                const fechaefec = prestamo1.getDevolcuion()
+                console.log("El libro se devolvio: " + fechaefec);
+            }
         }
     }
     public cargarPrestamos(prestamos : prestamo[]):void
@@ -167,7 +193,24 @@ export class coleccionPrestamos
     }
 
     public listarPresto():void{
-
+        this.prestamos.forEach((pres) => {
+            console.log("-----Prestamos-----");
+            if(pres.getActivo())
+            {
+                console.log("El prestamo esta activo, todavia no lo devolvio");
+            }
+            console.log(JSON.stringify(pres.getUsuario() , null ,2) );
+            console.log(JSON.stringify(pres.getItemprestado() , null ,2) );
+            const fechaPres : Date = new Date(pres.getFechaPrestamo());
+            const fechadev : Date = new Date(pres.getFechaDevolucion());
+            console.log("Fecha de prestamo: "+fechaPres.toDateString());
+            console.log("Fecha de devolucion: "+fechadev.toDateString());
+            if(pres.getDevolcuion() !== undefined)
+            {
+                const fechaefec = pres.getDevolcuion()
+                console.log("El libro se devolvio: " + fechaefec);
+            }
+        })
         
     }
 

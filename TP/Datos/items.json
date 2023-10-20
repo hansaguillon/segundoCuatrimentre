@@ -14,7 +14,7 @@
     "disponible": true,
     "titulo": "Choque de reyes",
     "anio": 1998,
-    "cant": 3,
+    "cant": 0,
     "codigo": 2,
     "autor": "George R. R. Martin",
     "genero": "Fantasía heroica"
@@ -24,7 +24,7 @@
     "disponible": true,
     "titulo": "Tormenta de espadas",
     "anio": 2000,
-    "cant": 1,
+    "cant": 0,
     "codigo": 3,
     "autor": "George R. R. Martin",
     "genero": "Fantasía heroica"
@@ -34,7 +34,7 @@
     "disponible": true,
     "titulo": "Festín de cuervos",
     "anio": 2005,
-    "cant": 5,
+    "cant": 4,
     "codigo": 4,
     "autor": "George R. R. Martin",
     "genero": "Fantasía heroica"

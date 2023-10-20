@@ -1,5 +1,7 @@
 const fs = require('fs');
+import { itemslibreria } from "../Clases/itemlibre";
 import {prestamo} from "../Clases/prestamo"
+import { usuario } from "../Clases/usuario";
 
 
 export class FileManagerPrestamos {
@@ -13,13 +15,13 @@ export class FileManagerPrestamos {
   }
 
   // Método para cargar los datos desde el archivo.
-   public cargarDatos(): prestamo[] {
+   static cargarDatos(): prestamo[] {
     try {
       const userJSON = fs.readFileSync('../Datos/prestamos.json', 'utf8');
-      
-      return JSON.parse(userJSON,prestamo.revive);
+  
+      return JSON.parse(userJSON,prestamo.revive2);
     } catch (error) {
-      console.error('Error al cargar los datos:', error);
+      console.error('Error al cargar los datos:');
       return [];
     }
   }

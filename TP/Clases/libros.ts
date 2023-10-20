@@ -32,6 +32,7 @@ export class libro extends itemslibreria
         this.genero = genero;
     }
 
+    
     static revive(key: string, value: any): libro | any {
         if (typeof value === 'object' && value !== null && 'autor' in value) {
             const book = new libro(value.codigo,value.titulo,value.anio,value.cant,value.autor,value.genero);

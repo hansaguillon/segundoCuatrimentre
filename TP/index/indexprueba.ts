@@ -23,10 +23,18 @@ FileManageritems.guardarDatos(libros.devovlerItems());
 
 libros.cargarItems(FileManageritems.cargarDatos());
 usuarios.cargarUsuarios(FileManagerUsuarios.cargarDatosUsuarios());
-
-
-prestamos.agregarPrestamo(35412721,2);
+prestamos.cargarPrestamos(FileManagerPrestamos.cargarDatos());
+/*
+prestamos.agregarPrestamo(35412721,3);
 FileManagerPrestamos.guardarDatos(prestamos.devolverPrestamos());
+*/
+
+
+prestamos.devoluciondelPrestamo("88cc3bd2-39e5-4b5a-b28a-801f72910b14");
+prestamos.mostrarPrestamo("88cc3bd2-39e5-4b5a-b28a-801f72910b14");
+
+
+
 
 
 

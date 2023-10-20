@@ -1,6 +1,6 @@
 [
   {
-    "id": "316cde70-50dd-4256-afe8-3ed55a947346",
+    "id": "88cc3bd2-39e5-4b5a-b28a-801f72910b14",
     "activo": true,
     "usuario": {
       "id": "9780f33c-63d9-4749-8aba-9f1d99e678cc",
@@ -18,12 +18,66 @@
       "disponible": true,
       "titulo": "Choque de reyes",
       "anio": 1998,
-      "cant": 2,
+      "cant": 1,
       "codigo": 2,
       "autor": "George R. R. Martin",
       "genero": "Fantasía heroica"
     },
-    "fechaprestamo": "2023-10-25T20:01:12.424Z",
-    "fechadevolucion": "2023-10-18T20:01:12.424Z"
+    "fechaprestamo": "2023-09-20T19:11:29.013Z",
+    "fechadevolucion": "2023-09-27T19:11:29.013Z"
+  },
+  {
+    "id": "c5652615-e7fe-49c0-be26-a5691b54f996",
+    "activo": true,
+    "usuario": {
+      "id": "9780f33c-63d9-4749-8aba-9f1d99e678cc",
+      "puntos": 0,
+      "activo": true,
+      "penalizacion": false,
+      "nomyape": "hans",
+      "dni": 35412721,
+      "edad": 32,
+      "telefono": "2983346206",
+      "direccion": "brown 825"
+    },
+    "itemprestado": {
+      "id": "776ca856-bf0d-4972-b283-1eabb5e34233",
+      "disponible": true,
+      "titulo": "Tormenta de espadas",
+      "anio": 2000,
+      "cant": 0,
+      "codigo": 3,
+      "autor": "George R. R. Martin",
+      "genero": "Fantasía heroica"
+    },
+    "fechaprestamo": "2023-10-20T19:55:21.148Z",
+    "fechadevolucion": "2023-10-27T19:55:21.148Z"
+  },
+  {
+    "id": "4f96fe88-498c-467e-a9e1-a213cd2c64f4",
+    "activo": true,
+    "usuario": {
+      "id": "c7aeef08-59d9-4a09-9ce5-6947cf82e1c8",
+      "puntos": 0,
+      "activo": true,
+      "penalizacion": false,
+      "nomyape": "Paula",
+      "dni": 33847625,
+      "edad": 34,
+      "telefono": "2215588742",
+      "direccion": "brown 825"
+    },
+    "itemprestado": {
+      "id": "0e0f9c26-809f-43df-b934-7f49e525d657",
+      "disponible": true,
+      "titulo": "Festín de cuervos",
+      "anio": 2005,
+      "cant": 4,
+      "codigo": 4,
+      "autor": "George R. R. Martin",
+      "genero": "Fantasía heroica"
+    },
+    "fechaprestamo": "2023-10-10T19:57:45.853Z",
+    "fechadevolucion": "2023-10-17T19:57:45.853Z"
   }
 ]
