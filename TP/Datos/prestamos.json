@@ -1,7 +1,8 @@
 [
   {
     "id": "88cc3bd2-39e5-4b5a-b28a-801f72910b14",
-    "activo": true,
+    "devolucion": "2023-10-24T14:25:15.589Z",
+    "activo": false,
     "usuario": {
       "id": "9780f33c-63d9-4749-8aba-9f1d99e678cc",
       "puntos": 0,
@@ -23,8 +24,8 @@
       "autor": "George R. R. Martin",
       "genero": "Fantasía heroica"
     },
-    "fechaprestamo": "2023-09-20T19:11:29.013Z",
-    "fechadevolucion": "2023-09-27T19:11:29.013Z"
+    "fechaprestamo": "2023-10-10T19:11:29.013Z",
+    "fechadevolucion": "2023-10-17T19:11:29.013Z"
   },
   {
     "id": "c5652615-e7fe-49c0-be26-a5691b54f996",

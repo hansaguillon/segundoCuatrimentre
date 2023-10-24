@@ -70,6 +70,10 @@ export class usuario{
     {
         return this.puntos;
     }
+    public setPuntos(puntos: number):void
+    {
+        this.puntos = puntos;
+    }
     public sumaPuntos(puntos:number):void
     {
         this.puntos += puntos;

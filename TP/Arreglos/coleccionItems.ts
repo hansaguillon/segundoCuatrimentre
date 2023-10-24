@@ -2,6 +2,7 @@ import { itemslibreria } from "../Clases/itemlibre";
 import {libro} from "../Clases/libros";
 import { revista } from "../Clases/revista";
 import { coleccionUsuarios } from "./coleccionUsuarios";
+import * as rs from "readline-sync";
 
 
 export class coleccionItems 
@@ -115,6 +116,39 @@ export class coleccionItems
     }
 
 
+    public menuItems()
+    {
+        while(true)
+        {
+            console.clear()
+            const choice = rs.keyInSelect(this.menuOptions);
+             switch(choice)
+             {
+                case 0:
+                    rs.keyInPause("1");
+                    break;
+                case 1:
+                    rs.keyInPause("2");
+                    break;
+                case 2:
+                    rs.keyInPause("3");
+                    break;
+                case 3:
+                    rs.keyInPause("4");
+                    break;
+                default:
+                    rs.keyInPause("Menu anterior");
+                    return;
+
+             }
+        }
+    }
+
+     menuOptions = ["Listar Items",
+        "Crear Item",
+        "Eliminar Item",
+        "Modificar Item"
+    ];
 
 
 

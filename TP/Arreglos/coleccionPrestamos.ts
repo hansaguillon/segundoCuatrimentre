@@ -8,6 +8,7 @@ import { FileManagerUsuarios } from "../Archivos/fsusuarios";
 import { FileManageritems } from "../Archivos/fsitems";
 import { log } from "console";
 import { libro } from "../Clases/libros";
+import * as rs from "readline-sync";
 
 export class coleccionPrestamos
 {
@@ -47,27 +48,28 @@ export class coleccionPrestamos
                                }
                                 else
                               {
-                                     throw new Error("No tenemos stock de "+ item.getTitulo());
+                                    console.log("No tenemos stock de "+ item.getTitulo());
                               }
                         }else
                         {
-                            throw new Error("No tenemos ese item");
+                            console.log("No tenemos ese item");
                         }
                     
                     }else
                     {
-                        throw new Error("El "+ usuario.getNomyape() + " esta penalizado");
+                        console.log("El "+ usuario.getNomyape() + " esta penalizado");
                     }
                 }
                 else
                 {
-                    throw new Error("El "+ usuario.getNomyape() + " esta bloqueado, usted no puede alquilar mas nada");
+                   console.log("El "+ usuario.getNomyape() + " esta bloqueado, usted no puede alquilar mas nada");
                 }
                
             }
             else
             {
-                throw new Error("El usuario no esta registrado");
+               console.log( "El usuario no esta registrado");
+              
             }
         }catch(e)
         {
@@ -86,7 +88,6 @@ export class coleccionPrestamos
             const item= libro.revive('',dev.getItemprestado());
 
             item.sumarCant();
-            console.log(item);
             dev.devolucionEfectuada();
             if(dev.getFechaDevolucion() > dev.getFechaPrestamo())
             {
@@ -96,11 +97,15 @@ export class coleccionPrestamos
             {
                 this.devovlerPuntos(dev);
             }
+
         }
         else
         {
-            throw new Error("El prestamo no existe");
+            console.log("El prestamo no existe");
         }
+        FileManagerUsuarios.guardarDatosUsuarios(this.coleccionUser.devolverusuarios());
+        FileManageritems.guardarDatos(this.coleccionitem.devovlerItems());
+        FileManagerPrestamos.guardarDatos(this.devolverPrestamos());
     }
 
     public devovlerPuntos(devolucion:prestamo):void
@@ -120,7 +125,6 @@ export class coleccionPrestamos
         const canti = fechaPres.getTime() - fechadevo.getTime();
         
         const diasDiferencia = Math.floor(canti / (1000 * 60 * 60 * 24));
-        console.log(diasDiferencia);
         
         const user = usuario.revive('',devolucion.getUsuario()) ;
 
@@ -128,8 +132,8 @@ export class coleccionPrestamos
         if(diasDiferencia > 10)
         {
             user.setPenalizado(true);
-            console.log(user);
-            throw new Error("El usuario a sido bloqueado, no podra volver a alquilar libros");
+           console.log("El usuario a sido bloqueado, no podra volver a alquilar libros");
+           
             
         }
         else
@@ -138,7 +142,8 @@ export class coleccionPrestamos
             {
                 user.sumaPuntos(6);
                 user.setPenalizado(true);
-                throw new Error("El usuario a sido penalizado, no podra alquilar nada por una semana");
+                console.log( "El usuario a sido penalizado, no podra alquilar nada por una semana");
+
             }
             else
                 if(diasDiferencia > 2 && diasDiferencia < 5)
@@ -150,7 +155,8 @@ export class coleccionPrestamos
                     user.sumaPuntos(2);
                 }
         }
-
+        this.coleccionUser.actualizarUsuario(user);
+       
     }
 
     public buscarPrestamo(id:string):prestamo | undefined
@@ -213,6 +219,39 @@ export class coleccionPrestamos
         })
         
     }
+    public menuPrestamos()
+    {
+        while(true)
+        {
+            console.clear()
+            const choice = rs.keyInSelect(this.menuOptions);
+             switch(choice)
+             {
+                case 0:
+                    rs.keyInPause("1");
+                    break;
+                case 1:
+                    rs.keyInPause("2");
+                    break;
+                case 2:
+                    rs.keyInPause("3");
+                    break;
+                case 3:
+                    rs.keyInPause("4");
+                    break;
+                default:
+                    rs.keyInPause("menu anterior");
+                    return;
+
+             }
+        }
+    }
+
+     menuOptions = ["Listar Prestamos",
+        "Crear Prestamo",
+        "Eliminar Prestamo",
+        "Devolver Prestamo"
+    ];
 
 }
 

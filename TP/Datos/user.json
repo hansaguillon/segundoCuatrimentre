@@ -23,9 +23,9 @@
   },
   {
     "id": "9780f33c-63d9-4749-8aba-9f1d99e678cc",
-    "puntos": 0,
+    "puntos": 6,
     "activo": true,
-    "penalizacion": false,
+    "penalizacion": true,
     "nomyape": "hans",
     "dni": 35412721,
     "edad": 32,
