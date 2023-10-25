@@ -221,6 +221,7 @@ export class coleccionPrestamos
     }
     public menuPrestamos()
     {
+        this.cargarPrestamos(FileManagerPrestamos.cargarDatos());
         while(true)
         {
             console.clear()
@@ -253,6 +254,7 @@ export class coleccionPrestamos
         "Devolver Prestamo"
     ];
 
+    confirmacionOptions = ["Eliminar"];
 }
 
 
