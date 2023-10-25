@@ -1,5 +1,7 @@
+import { Readline } from "readline/promises";
 import {usuario} from "../Clases/usuario";
 import * as rs from "readline-sync";
+import { FileManagerUsuarios } from "../Archivos/fsusuarios";
 
 export class coleccionUsuarios
 {
@@ -36,10 +38,10 @@ export class coleccionUsuarios
     public buscarUsusarioPorDni(dni:number):usuario | undefined{
       
 
-        const usuario =this.usuarios.find((user) => user.getDni() === dni)
+        const user =this.usuarios.find((user) => user.getDni() === dni)
 
-
-        return usuario;
+        const userrev = usuario.revive('',user) ;
+        return userrev;
 
 }
     
@@ -50,10 +52,11 @@ export class coleccionUsuarios
             {
                 const usuario1 = new usuario(nomyape,dni,edad,telefono,direccion);
                 this.usuarios.push(usuario1);
+                FileManagerUsuarios.guardarDatosUsuarios(this.usuarios);
             }
             else
             {
-                throw new Error("el usuario ya esta registrado");
+                console.log("el usuario ya esta registrado");
             }
 
         }catch(e){
@@ -70,6 +73,7 @@ export class coleccionUsuarios
         this.usuarios.forEach((user, indice) => {
             if (user.getDni() === dni) {
                 this.usuarios.splice(indice, 1);
+                FileManagerUsuarios.guardarDatosUsuarios(this.usuarios);
             }
         });
 
@@ -151,8 +155,18 @@ export class coleccionUsuarios
             
         }
     }
+    public pedirDatos()
+    {
+        const nomyape = rs.question("Ingrese nombre y apellido: ");
+        const dni = rs.questionInt("Ingrese Dni: ");
+        const edad = rs.questionInt("Ingrese edad: ");
+        const telefono = rs.question("Ingrese Telefono: ")
+        const direccion =rs.question("Ingrese Direccion: ");
+        this.agregarUsuario(nomyape,dni,edad,telefono,direccion);
+    }
     public menuUsuarios()
     {
+    this.cargarUsuarios(FileManagerUsuarios.cargarDatosUsuarios());
         while(true)
         {
             console.clear()
@@ -160,12 +174,34 @@ export class coleccionUsuarios
              switch(choice)
              {
                 case 0:
-                    rs.keyInPause("1");
+                    this.listarUsuarios();
+                     rs.keyInPause("");
                     break;
                 case 1:
+                    this.pedirDatos()
                     rs.keyInPause("2");
                     break;
                 case 2:
+                    const dni = rs.questionInt("Ingrese el documento del usuario que desea eliminar: ");
+                    const userdel = this.buscarUsusarioPorDni(dni);
+                    if(userdel !== undefined)
+                    {
+                        console.log("Esta seguro que desea eliminar los datos de "+userdel.getNomyape());
+                        const choice2 = rs.keyInSelect(this.confirmacionOptions);
+                        switch (choice2)
+                        {
+                            case 0:
+                                this.eliminarUsuarioPorDni(dni);
+                                break;
+                            default:
+                                console.log("operacion cancelada");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        console.log("Usuario no encontrado");
+                    }
                     rs.keyInPause("3");
                     break;
                 case 3:
@@ -184,6 +220,8 @@ export class coleccionUsuarios
         "Eliminar Usuarios",
         "Modificar Usuarios"
     ];
+
+    confirmacionOptions = ["Eliminar"];
 
 
        

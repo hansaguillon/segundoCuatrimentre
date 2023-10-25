@@ -1,3 +1,4 @@
+import { FileManageritems } from "../Archivos/fsitems";
 import { itemslibreria } from "../Clases/itemlibre";
 import {libro} from "../Clases/libros";
 import { revista } from "../Clases/revista";
@@ -43,10 +44,11 @@ export class coleccionItems
             {
                 const libro1 = new libro(codigo,titulo,anio,cant,autor,genero);
                 this.items.push(libro1);
+                FileManageritems.guardarDatos(this.items);
             }
             else
             {
-                throw new Error("El libro ya se encuentra cargado");
+                console.log("El libro ya se encuentra cargado");
             }
 
 
@@ -85,9 +87,9 @@ export class coleccionItems
     }
     public buscarItemPorCod(cod:number):itemslibreria | undefined{
 
-        let itemlibre = this.items.find((item) =>item.getCodigo() === cod);
-
-        return itemlibre;
+        const itemlibre = this.items.find((item) =>item.getCodigo() === cod);
+        const itemrev = libro.revive('',itemlibre)
+        return itemrev;
     }
 
     public buscarItemPorId(id:string):itemslibreria | undefined{
@@ -115,9 +117,20 @@ export class coleccionItems
         return this.items;
     }
 
+    public pedirDatos()
+    {
+        const codigo = rs.questionInt("Ingrese codigo del libro: ");
+        const titulo = rs.question("Ingrese titulo: ");
+        const anio = rs.questionInt("Ingrese año: ");
+        const cant = rs.questionInt("Ingrese la cantidad de ejemplares que tenemos en stock: ");
+        const autor = rs.question("Ingrese el autor: ");
+        const genero = rs.question("Ingrese el genero: ");
+        this.agregarLibro(codigo,titulo,anio,cant,autor,genero);
+    }
 
     public menuItems()
     {
+        this.cargarItems(FileManageritems.cargarDatos());
         while(true)
         {
             console.clear()
@@ -125,12 +138,34 @@ export class coleccionItems
              switch(choice)
              {
                 case 0:
-                    rs.keyInPause("1");
+                   this.listarItems();
+                   rs.keyInPause("");
                     break;
                 case 1:
+                    this.pedirDatos();
                     rs.keyInPause("2");
                     break;
                 case 2:
+                    const cod =rs.questionInt("Ingrese el codigo del libro que desea eliminar: ");
+                    const itemdel = this.buscarItemPorCod(cod);
+                    if(itemdel !== undefined)
+                    {
+                        console.log("Esta seguro que desea eliminar los datos de "+itemdel.getTitulo());
+                        const choice2 = rs.keyInSelect(this.confirmacionOptions);
+                        switch (choice2)
+                        {
+                            case 0:
+                                this.eliminarItemxcod(cod);;
+                                break;
+                            default:
+                                console.log("operacion cancelada");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        console.log("El item no existe");
+                    }
                     rs.keyInPause("3");
                     break;
                 case 3:
@@ -149,6 +184,7 @@ export class coleccionItems
         "Eliminar Item",
         "Modificar Item"
     ];
+    confirmacionOptions = ["Eliminar"];
 
 
 

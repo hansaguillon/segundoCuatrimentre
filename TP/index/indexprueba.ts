@@ -21,7 +21,7 @@ libros.agregarLibro(4,"Festín de cuervos",2005,5,"George R. R. Martin","Fantas�
 libros.agregarLibro(5,"Danza de dragones ",2011,8,"George R. R. Martin","Fantasía heroica");
 FileManageritems.guardarDatos(libros.devovlerItems());
 */
-/*
+
 libros.cargarItems(FileManageritems.cargarDatos());
 usuarios.cargarUsuarios(FileManagerUsuarios.cargarDatosUsuarios());
 prestamos.cargarPrestamos(FileManagerPrestamos.cargarDatos());
@@ -32,12 +32,12 @@ FileManagerPrestamos.guardarDatos(prestamos.devolverPrestamos());
 
 prestamos.devoluciondelPrestamo("88cc3bd2-39e5-4b5a-b28a-801f72910b14");
 //prestamos.mostrarPrestamo("88cc3bd2-39e5-4b5a-b28a-801f72910b14");
-usuarios.listarUsuarios();
+
 
 */
+
+
 menuPrincipal.menu();
-
-
 
 
 
