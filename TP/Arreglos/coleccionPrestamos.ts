@@ -129,6 +129,7 @@ export class coleccionPrestamos
         {      
             user.restaPuntos(1);
             this.coleccionUser.actualizarUsuario(user);
+            console.log("Al usuario se le devuelve 1 punto por buen cumplimiento");
         }
     }
 
