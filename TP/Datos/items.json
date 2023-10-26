@@ -48,5 +48,15 @@
     "codigo": 5,
     "autor": "George R. R. Martin",
     "genero": "Fantasía heroica"
+  },
+  {
+    "id": "574b6127-d861-4d4c-8b1c-7a9c3d113a79",
+    "disponible": true,
+    "titulo": "El Se�or De Los Anillos: La Comunidad Del Anillo",
+    "anio": 1955,
+    "cant": 2,
+    "codigo": 6,
+    "autor": "J. R. R. Tolkien",
+    "genero": "Fantas�a"
   }
 ]

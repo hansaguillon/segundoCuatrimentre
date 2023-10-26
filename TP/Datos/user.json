@@ -23,7 +23,7 @@
   },
   {
     "id": "9780f33c-63d9-4749-8aba-9f1d99e678cc",
-    "puntos": 6,
+    "puntos": 0,
     "activo": true,
     "penalizacion": true,
     "nomyape": "hans",
@@ -31,5 +31,38 @@
     "edad": 32,
     "telefono": "2983346206",
     "direccion": "brown 825"
+  },
+  {
+    "id": "5f63416f-da18-4c64-97c2-4a8b25c4913a",
+    "puntos": 0,
+    "activo": true,
+    "penalizacion": false,
+    "nomyape": "Sergio",
+    "dni": 20355722,
+    "edad": 51,
+    "telefono": "2983404137",
+    "direccion": "Sarmineto 870"
+  },
+  {
+    "id": "e2c6f6f9-d99d-4523-b4e4-be5051cd1b6f",
+    "puntos": 0,
+    "activo": true,
+    "penalizacion": false,
+    "nomyape": "Jose",
+    "dni": 37123456,
+    "edad": 30,
+    "telefono": "2983456123",
+    "direccion": "Mitre 365"
+  },
+  {
+    "id": "68c86dba-e85b-45bd-a6cb-5aed07a2f984",
+    "puntos": 0,
+    "activo": true,
+    "penalizacion": false,
+    "nomyape": "Alina",
+    "dni": 50123456,
+    "edad": 10,
+    "telefono": "29832020",
+    "direccion": "Sarmineto 870"
   }
 ]

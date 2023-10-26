@@ -26,6 +26,8 @@ export class coleccionPrestamos
     }
 
     public agregarPrestamo(dni:number, codigo:number):void{
+        this.coleccionUser.cargarUsuarios(FileManagerUsuarios.cargarDatosUsuarios());
+        this.coleccionitem.cargarItems(FileManageritems.cargarDatos());
         const usuario =  this.coleccionUser.buscarUsusarioPorDni(dni);
         const item = this.coleccionitem.buscarItemPorCod(codigo);
         try
@@ -43,8 +45,8 @@ export class coleccionPrestamos
                                   const prestamo1 = new prestamo(usuario,item);
                                   this.prestamos.push(prestamo1);
                                   item.restarCant(1);
-                                 FileManageritems.guardarDatos(this.coleccionitem.devovlerItems());
-    
+                                  FileManagerPrestamos.guardarDatos(this.devolverPrestamos());
+                                  console.log("Prestamo aceptado");
                                }
                                 else
                               {
@@ -81,7 +83,8 @@ export class coleccionPrestamos
 
     public devoluciondelPrestamo(id:string):void
     {
-        const dev = this.buscarPrestamo(id);
+        let dev = this.buscarPrestamo(id);
+        dev = prestamo.revive("",dev);
         if(dev !== undefined)
         {
             dev.cambiarEstadoDePrestamo();
@@ -89,31 +92,43 @@ export class coleccionPrestamos
 
             item.sumarCant();
             dev.devolucionEfectuada();
-            if(dev.getFechaDevolucion() > dev.getFechaPrestamo())
-            {
-                this.calcularPenalizacion(dev);
-            }
-            else
-            {
-                this.devovlerPuntos(dev);
-            }
+            const devo = new Date();
+            const fechadev : Date = new Date(dev.getFechaDevolucion());
 
+
+              if(devo > fechadev)
+                 {
+                   this.calcularPenalizacion(dev);
+  
+
+                 }
+                 else
+                  {
+                        this.devovlerPuntos(dev);
+
+                 }
+            FileManageritems.guardarDatos(this.coleccionitem.devovlerItems());
+         FileManagerPrestamos.guardarDatos(this.devolverPrestamos());
+                 console.log("Devolucion Exitosa");
+
+            
+            
         }
         else
         {
             console.log("El prestamo no existe");
         }
-        FileManagerUsuarios.guardarDatosUsuarios(this.coleccionUser.devolverusuarios());
-        FileManageritems.guardarDatos(this.coleccionitem.devovlerItems());
-        FileManagerPrestamos.guardarDatos(this.devolverPrestamos());
+
     }
 
     public devovlerPuntos(devolucion:prestamo):void
     {
-        const usuario = devolucion.getUsuario();
-        if(usuario.getPuntos() > 0)
-        {
-            usuario.restaPuntos(1);
+        const user = usuario.revive('',devolucion.getUsuario());
+
+        if(user.getPuntos() > 0)
+        {      
+            user.restaPuntos(1);
+            this.coleccionUser.actualizarUsuario(user);
         }
     }
 
@@ -149,14 +164,16 @@ export class coleccionPrestamos
                 if(diasDiferencia > 2 && diasDiferencia < 5)
                 {
                     user.sumaPuntos(3);
+                    console.log("al usuario se le cargan "+ 3 + " Puntos por devolver el item tarde");
                 }
                 else
                 {
                     user.sumaPuntos(2);
+                    console.log("al usuario se le cargan "+ 2 + " Puntos por devolver el item tarde");
                 }
         }
         this.coleccionUser.actualizarUsuario(user);
-       
+        
     }
 
     public buscarPrestamo(id:string):prestamo | undefined
@@ -219,6 +236,15 @@ export class coleccionPrestamos
         })
         
     }
+    public pedirDatos():void
+    {
+        const dni = rs.questionInt("Ingrese numero de documento del usuario para hacer el prestamo: ");
+        const cod = rs.questionInt("Ingrese el codigo del libro que el usuario va a retirar");
+        this.agregarPrestamo(dni,cod);
+
+    }
+
+
     public menuPrestamos()
     {
         this.cargarPrestamos(FileManagerPrestamos.cargarDatos());
@@ -229,16 +255,19 @@ export class coleccionPrestamos
              switch(choice)
              {
                 case 0:
-                    rs.keyInPause("1");
+                    this.listarPresto();
+                    rs.keyInPause("");
                     break;
-                case 1:
-                    rs.keyInPause("2");
+                case 1: 
+                    this.pedirDatos();
+                    rs.keyInPause("");
                     break;
                 case 2:
-                    rs.keyInPause("3");
+                    rs.keyInPause("");
                     break;
                 case 3:
-                    rs.keyInPause("4");
+                    this.devoluciondelPrestamo(rs.question("Ingrese el id del prestamo:   "));
+                    rs.keyInPause("");
                     break;
                 default:
                     rs.keyInPause("menu anterior");

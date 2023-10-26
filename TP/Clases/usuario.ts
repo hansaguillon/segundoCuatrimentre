@@ -80,7 +80,7 @@ export class usuario{
     }
     public restaPuntos(puntos:number):void
     {
-        this.puntos += puntos;
+        this.puntos =this.puntos - puntos;
     }
 
     public getPenalizado():boolean

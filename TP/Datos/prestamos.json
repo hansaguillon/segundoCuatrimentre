@@ -51,8 +51,8 @@
       "autor": "George R. R. Martin",
       "genero": "Fantasía heroica"
     },
-    "fechaprestamo": "2023-10-20T19:55:21.148Z",
-    "fechadevolucion": "2023-10-27T19:55:21.148Z"
+    "fechaprestamo": "2023-10-15T19:55:21.148Z",
+    "fechadevolucion": "2023-10-22T19:55:21.148Z"
   },
   {
     "id": "4f96fe88-498c-467e-a9e1-a213cd2c64f4",
@@ -80,5 +80,59 @@
     },
     "fechaprestamo": "2023-10-10T19:57:45.853Z",
     "fechadevolucion": "2023-10-17T19:57:45.853Z"
+  },
+  {
+    "id": "273a82b3-5e30-4da6-86be-e0389b9b0542",
+    "activo": true,
+    "usuario": {
+      "id": "68c86dba-e85b-45bd-a6cb-5aed07a2f984",
+      "puntos": 0,
+      "activo": true,
+      "penalizacion": false,
+      "nomyape": "Alina",
+      "dni": 50123456,
+      "edad": 10,
+      "telefono": "29832020",
+      "direccion": "Sarmineto 870"
+    },
+    "itemprestado": {
+      "id": "574b6127-d861-4d4c-8b1c-7a9c3d113a79",
+      "disponible": true,
+      "titulo": "El Se�or De Los Anillos: La Comunidad Del Anillo",
+      "anio": 1955,
+      "cant": 1,
+      "codigo": 6,
+      "autor": "J. R. R. Tolkien",
+      "genero": "Fantas�a"
+    },
+    "fechaprestamo": "2023-10-19T16:38:17.352Z",
+    "fechadevolucion": "2023-10-26T16:38:17.352Z"
+  },
+  {
+    "id": "1f6a30d3-0c9d-476a-b70e-a5dbd2a2b0f7",
+    "activo": true,
+    "usuario": {
+      "id": "e2c6f6f9-d99d-4523-b4e4-be5051cd1b6f",
+      "puntos": 0,
+      "activo": true,
+      "penalizacion": false,
+      "nomyape": "Jose",
+      "dni": 37123456,
+      "edad": 30,
+      "telefono": "2983456123",
+      "direccion": "Mitre 365"
+    },
+    "itemprestado": {
+      "id": "2e897773-5641-4638-b959-43dfa121b5eb",
+      "disponible": true,
+      "titulo": "Danza de dragones ",
+      "anio": 2011,
+      "cant": 7,
+      "codigo": 5,
+      "autor": "George R. R. Martin",
+      "genero": "Fantasía heroica"
+    },
+    "fechaprestamo": "2023-10-05T16:38:41.872Z",
+    "fechadevolucion": "2023-10-12T16:38:41.872Z"
   }
 ]

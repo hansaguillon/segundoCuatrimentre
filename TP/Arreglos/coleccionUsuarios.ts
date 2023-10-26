@@ -134,14 +134,15 @@ export class coleccionUsuarios
     }
     public actualizarUsuario(usermod : usuario):void
     {
-       /* this.usuarios.forEach((user, indice) => {
+        this.usuarios.forEach((user, indice) => {
             if (user.getDni() === usermod.getDni()) {
-                user = usermod;
-                console.log(user);
+
+                this.usuarios[indice] = usermod;
+                FileManagerUsuarios.guardarDatosUsuarios(this.usuarios);
             }
-        });*/
+        });
 
-
+/*
         let usuario = this.buscarUsusarioPorDni(usermod.getDni());
         if (usuario !== undefined)
         {
@@ -152,8 +153,9 @@ export class coleccionUsuarios
             usuario.setPenalizado(usermod.getPenalizado());
             usuario.setTelefono(usermod.getTelefono());
             usuario.setPuntos(usermod.getPuntos());
-            
-        }
+
+       
+        }*/
     }
     public pedirDatos()
     {
