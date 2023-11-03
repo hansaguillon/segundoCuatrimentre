@@ -134,5 +134,32 @@
     },
     "fechaprestamo": "2023-10-05T16:38:41.872Z",
     "fechadevolucion": "2023-10-12T16:38:41.872Z"
+  },
+  {
+    "id": "a967a616-b1c3-4367-ac20-30d8c7d397c3",
+    "activo": true,
+    "usuario": {
+      "id": "9780f33c-63d9-4749-8aba-9f1d99e678cc",
+      "puntos": 3,
+      "activo": true,
+      "penalizacion": false,
+      "nomyape": "hans",
+      "dni": 35412721,
+      "edad": 32,
+      "telefono": "2983346206",
+      "direccion": "brown 825"
+    },
+    "itemprestado": {
+      "id": "0e0f9c26-809f-43df-b934-7f49e525d657",
+      "disponible": true,
+      "titulo": "Festín de cuervos",
+      "anio": 2005,
+      "cant": 3,
+      "codigo": 4,
+      "autor": "George R. R. Martin",
+      "genero": "Fantasía heroica"
+    },
+    "fechaprestamo": "2023-10-26T22:24:33.672Z",
+    "fechadevolucion": "2023-11-02T22:24:33.672Z"
   }
 ]
