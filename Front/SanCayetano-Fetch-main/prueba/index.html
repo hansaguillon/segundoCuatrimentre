@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Modal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <button onclick="openModal()">Mostrar Formulario</button>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <form class="miFormulario" id='form'>
+                <div class="formGroup">
+                  <label for="title">Title</label>
+                  <input type="text" id='title' name='title'>
+                </div>
+                <div class="formGroup">
+                  <label for="year">Released</label>
+                  <input type="text" id='year' name='year'>
+                </div>
+                <div class="formGroup">
+                  <label for="director">Director</label>
+                  <input type="text" id='director' name='director'>
+                </div>
+                <div class="formGroup">
+                  <label for="duration">Duration</label>
+                  <input type="text" id='duration' name='duration'>
+                </div>
+                <div class="formGroup">
+                  <label for="poster">Poster</label>
+                  <input type="text" id='poster' name='poster'>
+                </div>
+                <div class="formGroup">
+                  <label for="genre">Genre</label>
+                  <input type="text" id='genre' name='genre'>
+                </div>
+                <div class="formGroup">
+                  <label for="rate">Rating</label>
+                  <input type="text" id='rate' name='rate'>
+                </div>
+                <input type="submit" value="Modificar">
+          
+              </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
